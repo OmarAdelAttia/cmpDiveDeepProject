@@ -1,4 +1,4 @@
-button {
+:host {
   display: inline-block;
   padding: 0.65rem 1.35rem;
   border-radius: 0.25rem;
@@ -14,10 +14,9 @@ button {
       transform: translateX(4px);
     }
   }
-}
-
-.icon {
-  display: inline-block;
-  margin-left: 0.5rem;
-  transition: transform 0.2s ease-in-out;
+  .icon {
+    display: inline-block;
+    margin-left: 0.5rem;
+    transition: transform 0.2s ease-in-out;
+  }
 }
