@@ -5,7 +5,10 @@ import { Component, Input, input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './traffic.component.html',
-  styleUrl: './traffic.component.scss'
+  styleUrl: './traffic.component.scss',
+  host: {
+    id: 'traffic'
+  }
 })
 export class TrafficComponent {
 
