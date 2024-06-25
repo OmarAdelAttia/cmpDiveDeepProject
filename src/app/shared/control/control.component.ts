@@ -6,9 +6,13 @@ import { Component, ViewEncapsulation, input } from '@angular/core';
   imports: [],
   templateUrl: './control.component.html',
   styleUrl: './control.component.scss',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated,
+  host: {
+    class: 'control'
+  }
 })
 export class ControlComponent {
 
-  label = input.required<string>()
+  label = input.required<string>();
+
 }
