@@ -18,7 +18,7 @@ export class ServerStatusComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(`OnInit`);
+    // console.log(`OnInit`);
     // // The interval throw error due to the time
     // const interval = setInterval(() => {
     //   const randomNum = Math.random();
