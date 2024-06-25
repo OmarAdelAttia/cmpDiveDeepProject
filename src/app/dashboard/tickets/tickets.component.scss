@@ -2,17 +2,15 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-}
-
-#tickets ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  width: 15rem;
-}
-
-#tickets li {
-  margin: 0.5rem 0;
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 15rem;
+    li {
+      margin: 0.5rem 0;
+    }
+  }
 }
 
 #tickets p {
