@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, ViewEncapsulation, input } from '@angular/core';
+import { Component, ContentChild, ElementRef, HostBinding, HostListener, ViewEncapsulation, contentChild, input } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -9,7 +9,7 @@ import { Component, HostBinding, HostListener, ViewEncapsulation, input } from '
   encapsulation: ViewEncapsulation.None,
   host: {
     class: 'control',
-    // '(click)': 'onClick()'
+    '(click)': 'onClick()'
   }
 })
 export class ControlComponent {
@@ -20,10 +20,15 @@ export class ControlComponent {
   //   console.log(`Welcome from Control Component`);
   // }
 
+  // @ContentChild('input') private ctr?: ElementRef<HTMLInputElement | HTMLTextAreaElement>;
+
+  private ctr = contentChild.required<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input');
+
   label = input.required<string>();
 
-  // onClick() {
-  //   console.log(`Welcome from Control Component`);
-  // }
+  onClick() {
+    console.log(`Welcome from Control Component`);
+    console.log(this.ctr());
+  }
 
 }
