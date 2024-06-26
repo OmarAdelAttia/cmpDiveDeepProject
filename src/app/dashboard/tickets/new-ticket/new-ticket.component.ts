@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, afterNextRender, afterRender, viewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, afterNextRender, afterRender, output, viewChild } from '@angular/core';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from "../../../shared/control/control.component";
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,8 @@ export class NewTicketComponent implements OnInit, AfterViewInit {
   // @ViewChild('form') form?: ElementRef<HTMLFormElement>;
   // @ViewChild(ControlComponent) ctr?: ElementRef<ControlComponent>;
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+
+  add = output<{ title: string; text: string }>();
 
   constructor() {
     afterRender(() => {
@@ -39,7 +41,8 @@ export class NewTicketComponent implements OnInit, AfterViewInit {
   }
 
   onSubmit(inputEl: HTMLInputElement, textareaVal: string) {
-    console.log(inputEl.value, textareaVal)
+    console.log(inputEl.value, textareaVal);
+    this.add.emit({ title: inputEl.value, text: textareaVal })
     // this.form?.nativeElement.reset();
     this.form().nativeElement.reset();
   }
