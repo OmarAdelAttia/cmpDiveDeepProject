@@ -62,9 +62,17 @@ article {
       font-size: 0.75rem;
     }
 
-    button:hover {
+    .ticket-open:hover {
       color: #ec9fea;
     }
+
+    .ticket-closed:hover {
+      color: #51c788;
+    }
+
+    // button:hover {
+    //   color: #ec9fea;
+    // }
   }
 
   p:has(button) {

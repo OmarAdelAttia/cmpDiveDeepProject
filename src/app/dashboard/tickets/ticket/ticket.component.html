@@ -28,10 +28,18 @@
     <p>{{ ticketData().request }}</p>
 
     @if (ticketData().status === 'open') {
-    <p><button (click)="onMarkAsCompleted()">Mark as completed</button></p>
+    <p>
+        <button (click)="onMarkAsCompleted()" class="ticket-open">
+            Mark as completed
+        </button>
+    </p>
     }
     @if (ticketData().status === 'closed') {
-    <p><button (click)="onMarkAsReturned()">Mark as return</button></p>
+    <p>
+        <button (click)="onMarkAsReturned()" class="ticket-closed">
+            Mark as return
+        </button>
+    </p>
     }}
 
 </article>
