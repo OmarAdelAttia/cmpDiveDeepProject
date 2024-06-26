@@ -17,7 +17,7 @@ export class TicketsComponent {
 
   tickets: Ticket[] = [];
 
-  onAdd(ticketData: { title: string; text: string }) {
+  onAddTicket(ticketData: { title: string; text: string }) {
     const ticket: Ticket = {
       title: ticketData.title,
       request: ticketData.text,
@@ -25,5 +25,23 @@ export class TicketsComponent {
       status: 'open',
     }
     this.tickets.push(ticket);
+  }
+
+  onCloseTicket(id: string) {
+    this.tickets = this.tickets.map(ticket => {
+      if (ticket.id === id) {
+        return { ...ticket, status: 'closed' }
+      }
+      return ticket;
+    });
+  }
+
+  onOpenTicket(id: string) {
+    this.tickets = this.tickets.map(ticket => {
+      if (ticket.id === id) {
+        return { ...ticket, status: 'open' }
+      }
+      return ticket;
+    });
   }
 }
