@@ -13,18 +13,9 @@ import { Component, DestroyRef, OnInit, effect, inject, signal } from '@angular/
 export class ServerStatusComponent implements OnInit {
 
   currentStatus = signal<'online' | 'offline' | 'unknown'>('online');
-  // currentStatus: 'online' | 'offline' | 'unknown' = 'online';
   private destroyRef = inject(DestroyRef);
 
-  constructor() {
-    effect(() => {
-      console.log(this.currentStatus());
-      console.log(`effect function works with signal whenever the signal changes it fires`);
-    });
-  }
-
   ngOnInit(): void {
-    // console.log(`OnInit`);
     // // The interval throw error due to the time
     // const interval = setInterval(() => {
     //   const randomNum = Math.random();

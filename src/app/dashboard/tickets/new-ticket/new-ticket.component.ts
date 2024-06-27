@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, afterNextRender, afterRender, output, viewChild } from '@angular/core';
+import { Component, ElementRef, output, viewChild } from '@angular/core';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from "../../../shared/control/control.component";
 import { FormsModule } from '@angular/forms';
@@ -10,40 +10,15 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './new-ticket.component.scss',
   imports: [ButtonComponent, ControlComponent, FormsModule]
 })
-export class NewTicketComponent implements OnInit, AfterViewInit {
+export class NewTicketComponent {
 
-  // @ViewChild('form') form?: ElementRef<HTMLFormElement>;
-  // @ViewChild(ControlComponent) ctr?: ElementRef<ControlComponent>;
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
-
   add = output<{ title: string; text: string }>();
+  enteredTitle!: string;
+  enteredTextArea!: string;
 
-  constructor() {
-    afterRender(() => {
-      console.log(`AfterRender`);
-    });
-
-    afterNextRender(() => {
-      console.log(`AfterNextRender`);
-    });
-  }
-
-  ngOnInit(): void {
-    console.log(`OnInit`);
-    // console.log(this.form?.nativeElement);
-    console.log(this.form().nativeElement);
-  }
-
-  ngAfterViewInit(): void {
-    console.log(`AfterViewInit`);
-    // console.log(this.form?.nativeElement);
-    console.log(this.form().nativeElement);
-  }
-
-  onSubmit(inputEl: HTMLInputElement, textareaVal: string) {
-    console.log(inputEl.value, textareaVal);
-    this.add.emit({ title: inputEl.value, text: textareaVal })
-    // this.form?.nativeElement.reset();
+  onSubmit(inputVal: string, textareaVal: string) {
+    this.add.emit({ title: inputVal, text: textareaVal });
     this.form().nativeElement.reset();
   }
 }
